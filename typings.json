@@ -1,0 +1,5 @@
+{
+  "ambientDependencies": {
+    "page": "registry:dt/page#1.5.0+20150220135815"
+  }
+}
