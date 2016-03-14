@@ -1,0 +1,14 @@
+{
+  "verbose": false,
+  "suites": ["test"],
+  "plugins": {
+    "local": {
+      "browsers": ["chrome"]
+    }
+  },
+  "webserver": {
+    "pathMappings": [{
+      "/src": ".tmp"
+    }]
+  }
+}
