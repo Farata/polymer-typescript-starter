@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
   <script src="../../bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
@@ -16,14 +16,14 @@
 </test-fixture>
 
 <script>
-  suite('Home element', function() {
+  suite('Home element', function () {
     var homeElement, homeElementTitle;
 
-    setup(function() {
+    setup(function () {
       homeElement = fixture('basic');
     });
 
-    test('has <h1> title', function() {
+    test('has <h1> title', function () {
       homeElementTitle = homeElement.$$('h1');
       assert.equal(homeElementTitle.textContent, 'Home');
     });

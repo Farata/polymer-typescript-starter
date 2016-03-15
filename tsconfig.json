@@ -2,9 +2,12 @@
   "compilerOptions": {
     "sourceMap": true,
     "target": "ES5",
-    "outDir": ".tmp"
+    "outDir": ".tmp",
+    "rootDir": "src"
   },
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "typings/main",
+    "typings/main.d.ts"
   ]
 }

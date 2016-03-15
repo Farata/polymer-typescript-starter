@@ -1,61 +1,43 @@
 'use strict';
 
 const gulp = require('gulp');
+const glob = require('glob');
 const del = require('del');
-const loadPlugins = require('gulp-load-plugins');
 const path = require('path');
 const runSequence = require('run-sequence');
+const $ = require('gulp-load-plugins')();
 
-const $ = loadPlugins();
+const common = require('./common');
+const DIR_TMP = common.DIR_TMP;
+const DIR_DST = common.DIR_DST;
+const DIR_SRC = common.DIR_SRC;
+const DIR_WCS = common.DIR_WCS;
 
-const htmlminOptions = {
-  collapseWhitespace           : true,
-  customAttrAssign             : [/\$=/],
-  minifyCSS                    : true,
-  minifyJS                     : true,
-  removeComments               : true,
-  removeCommentsFromCDATA      : true,
-  removeScriptTypeAttributes   : true,
-  removeStyleLinkTypeAttributes: true
-};
+/**
+ * Returns a list of paths to HTML modules relative to the src directory. Each
+ * HTML file will become a bundle with all dependencies inlined. Common
+ * dependencies will be moved to a separate bundle called shared.html.
+ *
+ * The convention - each HTML file that represents a page becomes a "shard" +
+ * index.html.
+ *
+ * @returns {Array<string>}
+ */
+function getShards() => {
+  return glob.sync(`${DIR_SRC}/pages/*/*.html`)
+      .map(p => path.relative('src', p))
+      .concat('index.html');
+}
 
-const DIR_SRC = 'src';
-const DIR_DST = 'dist';
-const DIR_TMP = '.tmp';
-const DIR_WCS = path.join(DIR_TMP, '.wcs');
+gulp.task('clean', del.bind(null, [DIR_TMP, DIR_DST]));
 
-const SHARDS = [
-  'index.html',
-  'pages/home/home.html',
-  'pages/profile/profile.html'
-];
-
-const project = $.typescript.createProject('tsconfig.json', {
-  /**
-   * We don't use any kind of modules or <reference> tags in our project, so we
-   * don't need to support external modules resolving. According to the
-   * gulp-typescript plugin docs explicitly disabling it can improve
-   * compilation time.
-   */
-  noExternalResolve: true
-});
-
-const typescriptTask = (src, baseDir, dest) => {
-  return gulp.src(src, {base: baseDir})
-    .pipe($.typescript(project))
-    .pipe(gulp.dest(dest));
-};
-
-// TODO: read source files from tsconfig.json
-gulp.task('ts', () => {
-  return typescriptTask([`${DIR_SRC}/**/*.ts`, 'typings/browser/**/*.d.ts'], DIR_SRC, DIR_TMP);
-});
+gulp.task('ts', () => common.typescript(DIR_TMP));
 
 gulp.task('wcs', $.shell.task([
   `web-component-shards \
-      -r ${DIR_TMP} \
-      -w ${DIR_WCS} \
-      -e ${SHARDS.join(' ')}`
+    -r ${DIR_TMP} \
+    -w ${DIR_WCS} \
+    -e ${getShards().join(' ')}`
 ]));
 
 gulp.task('htmlmin', () => {
@@ -67,20 +49,26 @@ gulp.task('htmlmin', () => {
 // Compresses production ready version of the app.
 gulp.task('gzip', () => {
   return gulp.src(`${DIR_DST}/**/*.{html,js,css,svg}`)
-    .pipe($.gzip({
-      gzipOptions: {level: 6},
-      threshold: '5kb'
-    }))
+    .pipe($.gzip({gzipOptions: {level: 6}, threshold: '1kb'}))
     .pipe(gulp.dest(DIR_DST));
 });
 
-gulp.task('clean', del.bind(null, [DIR_TMP, DIR_DST]));
-
 gulp.task('copy', () => {
-  return gulp.src('src/**/*.html', {base: 'src'})
+  return gulp.src(`${DIR_SRC}/**/*.html`, {base: 'src'})
     .pipe(gulp.dest(DIR_TMP));
 });
 
 gulp.task('default', done => {
   runSequence('clean', ['ts', 'copy'], 'wcs', 'htmlmin', 'gzip', done);
 });
+
+var htmlminOptions = {
+  collapseWhitespace           : true,
+  customAttrAssign             : [/\$=/],
+  minifyCSS                    : true,
+  minifyJS                     : true,
+  removeComments               : true,
+  removeCommentsFromCDATA      : true,
+  removeScriptTypeAttributes   : true,
+  removeStyleLinkTypeAttributes: true
+};
