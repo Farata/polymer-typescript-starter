@@ -4,7 +4,7 @@ import * as gulp from 'gulp';
 import * as gulpLoadPlugins from 'gulp-load-plugins';
 import * as path from 'path';
 import * as runSequence from 'run-sequence';
-import {DIR_TMP, DIR_DST, DIR_SRC, DIR_WCS, typescript} from './common.ts';
+import {DIR_TMP, DIR_DST, DIR_SRC, typescript} from './common.ts';
 
 const $ = <any>gulpLoadPlugins();
 
@@ -31,12 +31,11 @@ gulp.task('ts', () => typescript(DIR_TMP));
 gulp.task('wcs', $.shell.task([
   `web-component-shards \
     -r ${DIR_TMP} \
-    -w ${DIR_WCS} \
     -e ${getShards().join(' ')}`
 ]));
 
 gulp.task('htmlmin', () => {
-  return gulp.src(`${DIR_DST}/**/*.html`)
+  return gulp.src(`${path.join(DIR_TMP, DIR_DST)}/**/*.html`)
     .pipe($.htmlmin(htmlminOptions))
     .pipe(gulp.dest(DIR_DST));
 });

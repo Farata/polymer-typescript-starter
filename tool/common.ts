@@ -5,7 +5,6 @@ import * as path from 'path';
 export const DIR_TMP = '.tmp';
 export const DIR_DST = 'dist';
 export const DIR_SRC = 'src';
-export const DIR_WCS = path.join(DIR_TMP, '.wcs');
 
 /**
  * The `project` is used inside the "ts" task to compile TypeScript code using
