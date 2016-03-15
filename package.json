@@ -7,7 +7,7 @@
     "clean": "gulp --cwd . --gulpfile tool/gulpfile-dev.ts clean",
     "start": "gulp --cwd . --gulpfile tool/gulpfile-dev.ts",
     "build": "gulp --cwd . --gulpfile tool/gulpfile-prod.ts",
-    "test": "gulp --cwd . --gulpfile tool/gulpfile-test.ts && wct",
+    "test": "gulp --cwd . --gulpfile tool/gulpfile-test.ts",
     "preserve:dist": "npm run build",
     "serve:dist": "static dist -p 7777 -z"
   },
