@@ -6,17 +6,25 @@
   "ambientDevDependencies": {
     "browser-sync": "registry:dt/browser-sync#0.0.0+20160130194402",
     "chokidar": "registry:dt/chokidar#1.0.0+20150305075054",
+    "clean-css": "registry:dt/clean-css#3.4.9+20160106161352",
     "del": "registry:dt/del#2.2.0+20160209151603",
     "glob": "registry:dt/glob#5.0.10+20150624063249",
     "gulp": "registry:dt/gulp#3.8.0+20150825164847",
+    "gulp-gzip": "registry:dt/gulp-gzip#0.0.0+20150902182016",
+    "gulp-htmlmin": "registry:dt/gulp-htmlmin#1.3.0+20160106162312",
     "gulp-load-plugins": "registry:dt/gulp-load-plugins#0.0.0+20151230112651",
+    "gulp-shell": "registry:dt/gulp-shell#0.0.0+20160112141858",
     "gulp-typescript": "registry:dt/gulp-typescript#0.0.0+20160122061535",
+    "html-minifier": "registry:dt/html-minifier#1.1.1+20160106162222",
     "micromatch": "registry:dt/micromatch#2.3.7+20160123140905",
     "minimatch": "registry:dt/minimatch#2.0.8+20150624135803",
     "node": "registry:dt/node#4.0.0+20160311162451",
     "orchestrator": "registry:dt/orchestrator#0.0.0+20150821143159",
     "parse-glob": "registry:dt/parse-glob#3.0.4+20160110125512",
     "q": "registry:dt/q#0.0.0+20160215162030",
-    "run-sequence": "registry:dt/run-sequence#0.0.0+20150825164847"
+    "relateurl": "registry:dt/relateurl#0.2.6+20160106162120",
+    "run-sequence": "registry:dt/run-sequence#0.0.0+20150825164847",
+    "source-map": "registry:dt/source-map#0.0.0+20151201114758",
+    "uglify-js": "registry:dt/uglify-js#2.6.1+20160106153543"
   }
 }

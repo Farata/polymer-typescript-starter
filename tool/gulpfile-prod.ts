@@ -1,12 +1,46 @@
 import * as del from 'del';
 import * as glob from 'glob';
 import * as gulp from 'gulp';
-import * as gulpLoadPlugins from 'gulp-load-plugins';
+import * as gzip from 'gulp-gzip';
+import * as htmlmin from 'gulp-htmlmin';
+import * as shell from 'gulp-shell';
 import * as path from 'path';
 import * as runSequence from 'run-sequence';
-import {DIR_TMP, DIR_DST, DIR_SRC, typescript} from './common.ts';
+import {
+    DIR_TMP,
+    DIR_DST,
+    DIR_SRC,
+    copyHtmlTask,
+    typescriptTask
+} from './common.ts';
 
-const $ = <any>gulpLoadPlugins();
+gulp.task('clean', del.bind(null, [DIR_TMP, DIR_DST]));
+
+gulp.task('ts', () => typescriptTask());
+
+gulp.task('copy.html', () => copyHtmlTask());
+
+gulp.task('wcs', shell.task([
+  `web-component-shards \
+    -r ${DIR_TMP} \
+    -e ${getShards().join(' ')}`
+]));
+
+gulp.task('htmlmin', () => {
+  return gulp.src(`${path.join(DIR_TMP, DIR_DST)}/**/*.html`)
+    .pipe(htmlmin(htmlminOptions))
+    .pipe(gulp.dest(DIR_DST));
+});
+
+gulp.task('gzip', () => {
+  return gulp.src(`${DIR_DST}/**/*.{html,js,css,svg}`)
+    .pipe(gzip({gzipOptions: {level: 6}, threshold: '1kb'}))
+    .pipe(gulp.dest(DIR_DST));
+});
+
+gulp.task('default', done => {
+  runSequence('clean', ['ts', 'copy.html'], 'wcs', 'htmlmin', 'gzip', done);
+});
 
 /**
  * Returns a list of paths to HTML modules relative to the src directory. Each
@@ -24,40 +58,9 @@ function getShards() {
       .concat('index.html');
 }
 
-gulp.task('clean', del.bind(null, [DIR_TMP, DIR_DST]));
-
-gulp.task('ts', () => typescript(DIR_TMP));
-
-gulp.task('wcs', $.shell.task([
-  `web-component-shards \
-    -r ${DIR_TMP} \
-    -e ${getShards().join(' ')}`
-]));
-
-gulp.task('htmlmin', () => {
-  return gulp.src(`${path.join(DIR_TMP, DIR_DST)}/**/*.html`)
-    .pipe($.htmlmin(htmlminOptions))
-    .pipe(gulp.dest(DIR_DST));
-});
-
-// Compresses production ready version of the app.
-gulp.task('gzip', () => {
-  return gulp.src(`${DIR_DST}/**/*.{html,js,css,svg}`)
-    .pipe($.gzip({gzipOptions: {level: 6}, threshold: '1kb'}))
-    .pipe(gulp.dest(DIR_DST));
-});
-
-gulp.task('copy', () => {
-  return gulp.src(`${DIR_SRC}/**/*.html`, {base: 'src'})
-    .pipe(gulp.dest(DIR_TMP));
-});
-
-gulp.task('default', done => {
-  runSequence('clean', ['ts', 'copy'], 'wcs', 'htmlmin', 'gzip', done);
-});
-
 var htmlminOptions = {
   collapseWhitespace           : true,
+  conservativeCollapse         : true,
   customAttrAssign             : [/\$=/],
   minifyCSS                    : true,
   minifyJS                     : true,
