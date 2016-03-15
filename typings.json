@@ -1,5 +1,22 @@
 {
   "ambientDependencies": {
+    "es6-promise": "registry:dt/es6-promise#0.0.0+20160221190517",
     "page": "registry:dt/page#1.5.0+20150220135815"
+  },
+  "ambientDevDependencies": {
+    "browser-sync": "registry:dt/browser-sync#0.0.0+20160130194402",
+    "chokidar": "registry:dt/chokidar#1.0.0+20150305075054",
+    "del": "registry:dt/del#2.2.0+20160209151603",
+    "glob": "registry:dt/glob#5.0.10+20150624063249",
+    "gulp": "registry:dt/gulp#3.8.0+20150825164847",
+    "gulp-load-plugins": "registry:dt/gulp-load-plugins#0.0.0+20151230112651",
+    "gulp-typescript": "registry:dt/gulp-typescript#0.0.0+20160122061535",
+    "micromatch": "registry:dt/micromatch#2.3.7+20160123140905",
+    "minimatch": "registry:dt/minimatch#2.0.8+20150624135803",
+    "node": "registry:dt/node#4.0.0+20160311162451",
+    "orchestrator": "registry:dt/orchestrator#0.0.0+20150821143159",
+    "parse-glob": "registry:dt/parse-glob#3.0.4+20160110125512",
+    "q": "registry:dt/q#0.0.0+20160215162030",
+    "run-sequence": "registry:dt/run-sequence#0.0.0+20150825164847"
   }
 }

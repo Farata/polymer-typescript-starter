@@ -1,17 +1,12 @@
-'use strict';
+import * as del from 'del';
+import * as glob from 'glob';
+import * as gulp from 'gulp';
+import * as gulpLoadPlugins from 'gulp-load-plugins';
+import * as path from 'path';
+import * as runSequence from 'run-sequence';
+import {DIR_TMP, DIR_DST, DIR_SRC, DIR_WCS, typescript} from './common.ts';
 
-const gulp = require('gulp');
-const glob = require('glob');
-const del = require('del');
-const path = require('path');
-const runSequence = require('run-sequence');
-const $ = require('gulp-load-plugins')();
-
-const common = require('./common');
-const DIR_TMP = common.DIR_TMP;
-const DIR_DST = common.DIR_DST;
-const DIR_SRC = common.DIR_SRC;
-const DIR_WCS = common.DIR_WCS;
+const $ = <any>gulpLoadPlugins();
 
 /**
  * Returns a list of paths to HTML modules relative to the src directory. Each
@@ -23,7 +18,7 @@ const DIR_WCS = common.DIR_WCS;
  *
  * @returns {Array<string>}
  */
-function getShards() => {
+function getShards() {
   return glob.sync(`${DIR_SRC}/pages/*/*.html`)
       .map(p => path.relative('src', p))
       .concat('index.html');
@@ -31,7 +26,7 @@ function getShards() => {
 
 gulp.task('clean', del.bind(null, [DIR_TMP, DIR_DST]));
 
-gulp.task('ts', () => common.typescript(DIR_TMP));
+gulp.task('ts', () => typescript(DIR_TMP));
 
 gulp.task('wcs', $.shell.task([
   `web-component-shards \

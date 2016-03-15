@@ -1,13 +1,14 @@
 {
   "compilerOptions": {
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "module": "commonjs",
     "sourceMap": true,
-    "target": "ES5",
-    "outDir": ".tmp",
-    "rootDir": "src"
+    "target": "ES5"
   },
   "exclude": [
     "node_modules",
-    "typings/main",
-    "typings/main.d.ts"
+    "typings/browser",
+    "typings/browser.d.ts"
   ]
 }

@@ -1,11 +1,11 @@
-const gulp = require('gulp');
-const gulpTypescript = require('gulp-typescript');
-const path = require('path');
+import * as gulp from 'gulp';
+import * as gulpTypescript from 'gulp-typescript';
+import * as path from 'path';
 
-const DIR_TMP = '.tmp';
-const DIR_DST = 'dist';
-const DIR_SRC = 'src';
-const DIR_WCS = path.join(DIR_TMP, '.wcs');
+export const DIR_TMP = '.tmp';
+export const DIR_DST = 'dist';
+export const DIR_SRC = 'src';
+export const DIR_WCS = path.join(DIR_TMP, '.wcs');
 
 /**
  * The `project` is used inside the "ts" task to compile TypeScript code using
@@ -22,16 +22,8 @@ const project = gulpTypescript.createProject('tsconfig.json', {
   noExternalResolve: true
 });
 
-const typescript = (dest) => {
-  return project.src()
+export function typescript(dest: string) {
+  return gulp.src([`${DIR_SRC}/**/*.ts`, 'typings/browser/**/*.d.ts'], {base: DIR_SRC})
       .pipe(gulpTypescript(project))
       .pipe(gulp.dest(dest));
-};
-
-module.exports = {
-  DIR_DST,
-  DIR_SRC,
-  DIR_TMP,
-  DIR_WCS,
-  typescript
-};
+}

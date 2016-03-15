@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "postinstall": "bower install && typings install",
-    "clean": "gulp --cwd . --gulpfile tool/gulpfile.dev.js clean",
-    "start": "gulp --cwd . --gulpfile tool/gulpfile.dev.js",
-    "build": "gulp --cwd . --gulpfile tool/gulpfile.prod.js",
+    "clean": "gulp --cwd . --gulpfile tool/gulpfile-dev.ts clean",
+    "start": "gulp --cwd . --gulpfile tool/gulpfile-dev.ts",
+    "build": "gulp --cwd . --gulpfile tool/gulpfile-prod.ts",
     "test": "wct",
     "preserve:dist": "npm run build",
     "serve:dist": "static dist -p 7777 -z"
@@ -29,6 +29,7 @@
     "gulp-util": "^3.0.7",
     "node-static": "^0.7.7",
     "run-sequence": "^1.1.5",
+    "ts-node": "^0.6.1",
     "typescript": "^1.8.2",
     "typings": "^0.7.5",
     "web-component-shards": "^1.1.3",
