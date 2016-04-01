@@ -1,5 +1,3 @@
-declare var Polymer: any;
-
 const APP_PREFIX: string = 'my';
 
 Polymer({
