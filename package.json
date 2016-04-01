@@ -7,6 +7,7 @@
     "clean": "gulp --cwd . --gulpfile tool/gulpfile-dev.ts clean",
     "start": "gulp --cwd . --gulpfile tool/gulpfile-dev.ts",
     "build": "gulp --cwd . --gulpfile tool/gulpfile-prod.ts",
+    "lint": "gulp --cwd . --gulpfile tool/gulpfile-prod.ts lint",
     "test": "gulp --cwd . --gulpfile tool/gulpfile-test.ts",
     "preserve:dist": "npm run build",
     "serve:dist": "static dist -p 7777 -z"
@@ -25,6 +26,7 @@
     "gulp-typescript": "^2.12.0",
     "gulp-util": "^3.0.7",
     "node-static": "^0.7.7",
+    "polylint": "^2.10.1",
     "run-sequence": "^1.1.5",
     "ts-node": "^0.7.1",
     "typescript": "^1.8.9",

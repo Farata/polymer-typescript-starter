@@ -42,6 +42,16 @@ gulp.task('default', done => {
   runSequence('clean', ['ts', 'copy.html'], 'wcs', 'htmlmin', 'gzip', done);
 });
 
+gulp.task('polylint', shell.task([
+  `polylint \
+    -r ${DIR_TMP} \
+    -i ${getShards().join(' ')}`
+]));
+
+gulp.task('lint', done => {
+  runSequence('clean', ['ts', 'copy.html'], 'polylint', done);
+});
+
 /**
  * Returns a list of paths to HTML modules relative to the src directory. Each
  * HTML file will become a bundle with all dependencies inlined. Common
