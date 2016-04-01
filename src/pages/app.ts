@@ -3,18 +3,22 @@ const APP_PREFIX: string = 'my';
 Polymer({
   is: 'my-app',
 
-  ready() {
-    page('/',        this.activate('home'));
-    page('/profile', this.activate('profile'));
-    page({hashbang: true});
+  properties: {
+    routeData: {
+      type: Object,
+      observer: 'onRouteChange'
+    }
   },
 
-  activate(name: string): PageJS.Callback {
-    return () => {
-      this.importHref(this.buildUrl(name),
+  onRouteChange(data) {
+    this.activate(data.page || 'home');
+    console.log(JSON.stringify(data, null, 2));
+  },
+
+  activate(name: string) {
+    this.importHref(this.buildUrl(name),
         () => this.appendPage(name),
         console.error.bind(console));
-    };
   },
 
   appendPage(name: string): void {

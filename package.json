@@ -11,9 +11,6 @@
     "preserve:dist": "npm run build",
     "serve:dist": "static dist -p 7777 -z"
   },
-  "dependencies": {
-    "page": "^1.7.1"
-  },
   "devDependencies": {
     "bower": "^1.7.7",
     "browser-sync": "^2.11.2",

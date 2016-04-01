@@ -2,6 +2,7 @@
   "name": "polymer-starter",
   "private": true,
   "dependencies": {
+    "carbon-elements": "PolymerElements/carbon-elements#^0.1.0",
     "gold-elements": "PolymerElements/gold-elements#^1.0.1",
     "iron-elements": "PolymerElements/iron-elements#^1.0.9",
     "neon-elements": "PolymerElements/neon-elements#^1.0.0",
