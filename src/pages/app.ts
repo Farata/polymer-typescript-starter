@@ -1,4 +1,5 @@
 const APP_PREFIX: string = 'my';
+const DEFAULT_PAGE: string = 'home';
 
 Polymer({
   is: 'my-app',
@@ -10,9 +11,8 @@ Polymer({
     }
   },
 
-  onRouteChange(data) {
-    this.activate(data.page || 'home');
-    console.log(JSON.stringify(data, null, 2));
+  onRouteChange(data: {page: string}) {
+    this.activate(data.page || DEFAULT_PAGE);
   },
 
   activate(name: string) {
