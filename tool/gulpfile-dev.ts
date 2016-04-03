@@ -22,7 +22,7 @@ gulp.task('serve', () => {
     }
   });
   gulp.watch(`${DIR_SRC}/**/*.ts`, ['ts-watch']);
-  gulp.watch(`${DIR_SRC}/**/*.{css,html}`, []).on('change', browserSync.reload);
+  gulp.watch(`${DIR_SRC}/**/*.{css,html}`, null).on('change', browserSync.reload);
 });
 
 gulp.task('default', done => runSequence('clean', 'ts', 'serve', done));
