@@ -1,4 +1,5 @@
 import * as browserSync from 'browser-sync';
+import * as historyApiFallback from 'connect-history-api-fallback';
 import * as del from 'del';
 import * as gulp from 'gulp';
 import * as runSequence from 'run-sequence';
@@ -15,6 +16,7 @@ gulp.task('serve', () => {
     notify: false,
     server: {
       baseDir: [DIR_TMP, DIR_SRC],
+      middleware: [historyApiFallback()],
       routes: {
         '/bower_components': 'bower_components',
         '/node_modules': 'node_modules'
