@@ -3,9 +3,9 @@ import * as glob from 'glob';
 import * as gulp from 'gulp';
 import * as gzip from 'gulp-gzip';
 import * as htmlmin from 'gulp-htmlmin';
-import * as shell from 'gulp-shell';
 import * as path from 'path';
 import * as runSequence from 'run-sequence';
+import * as shell from 'gulp-shell';
 import {
     DIR_TMP,
     DIR_DST,

@@ -1,13 +1,13 @@
 import * as browserSync from 'browser-sync';
-import * as historyApiFallback from 'connect-history-api-fallback';
 import * as del from 'del';
 import * as gulp from 'gulp';
+import * as historyApiFallback from 'connect-history-api-fallback';
 import * as runSequence from 'run-sequence';
 import {DIR_TMP, DIR_DST, DIR_SRC, typescriptTask} from './common.ts';
 
 gulp.task('clean', del.bind(null, [DIR_TMP, DIR_DST]));
 
-gulp.task('ts', () => typescriptTask());
+gulp.task('ts', () => typescriptTask(true));
 
 gulp.task('ts-watch', ['ts'], browserSync.reload);
 

@@ -1,4 +1,6 @@
 import * as gulp from 'gulp';
+import * as gulpif from 'gulp-if';
+import * as sourcemaps from 'gulp-sourcemaps';
 import * as typescript from 'gulp-typescript';
 
 export const DIR_TMP = '.tmp';
@@ -20,10 +22,12 @@ const project = typescript.createProject('tsconfig.json', {
   noExternalResolve: true
 });
 
-export function typescriptTask() {
+export function typescriptTask(enableSourcemaps: boolean = false) {
   let files = [`${DIR_SRC}/**/*.ts`, 'typings/browser/**/*.d.ts'];
   return gulp.src(files, {base: DIR_SRC})
+      .pipe(gulpif(enableSourcemaps, sourcemaps.init()))
       .pipe(typescript(project))
+      .pipe(gulpif(enableSourcemaps, sourcemaps.write()))
       .pipe(gulp.dest(DIR_TMP));
 }
 
