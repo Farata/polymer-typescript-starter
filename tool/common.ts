@@ -22,6 +22,11 @@ const project = typescript.createProject('tsconfig.json', {
   noExternalResolve: true
 });
 
+/**
+ * Compiles all TypeScript code in the project to JavaScript.
+ *
+ * @param enableSourcemaps Pass `true` to enable source maps generation
+ */
 export function typescriptTask(enableSourcemaps: boolean = false) {
   let files = [`${DIR_SRC}/**/*.ts`, 'typings/browser/**/*.d.ts'];
   return gulp.src(files, {base: DIR_SRC})
