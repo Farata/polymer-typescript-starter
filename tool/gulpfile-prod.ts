@@ -65,7 +65,7 @@ gulp.task('lint', done => {
 function getShards() {
   return glob.sync(`${DIR_SRC}/pages/*/*.html`)
       .map(p => path.relative('src', p))
-      .concat('index.html');
+      .concat('imports.html', 'index.html');
 }
 
 var htmlminOptions = {
