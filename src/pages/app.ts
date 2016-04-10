@@ -12,7 +12,9 @@ Polymer({
   },
 
   onRouteChange(data: {page: string}) {
-    this.activate(data.page || DEFAULT_PAGE);
+    if ('page' in data) {
+      this.activate(data.page || DEFAULT_PAGE);
+    }
   },
 
   activate(name: string) {
