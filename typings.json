@@ -1,10 +1,14 @@
 {
+  "ambientDependencies": {
+    "es6-promise": "registry:dt/es6-promise#0.0.0+20160317120654",
+    "polymer": "registry:dt/polymer#1.1.6+20160317120654",
+    "webcomponents.js": "registry:dt/webcomponents.js#0.6.0+20160317120654"
+  },
   "ambientDevDependencies": {
     "browser-sync": "registry:dt/browser-sync#0.0.0+20160316155526",
     "chokidar": "registry:dt/chokidar#1.4.3+20160316155526",
     "clean-css": "registry:dt/clean-css#3.4.9+20160316155526",
     "del": "registry:dt/del#2.2.0+20160317120654",
-    "es6-promise": "registry:dt/es6-promise#0.0.0+20160317120654",
     "glob": "registry:dt/glob#5.0.10+20160317120654",
     "gulp": "registry:dt/gulp#3.8.0+20160316155526",
     "gulp-gzip": "registry:dt/gulp-gzip#0.0.0+20160316155526",
@@ -20,13 +24,11 @@
     "node": "registry:dt/node#4.0.0+20160330064709",
     "orchestrator": "registry:dt/orchestrator#0.0.0+20160316155526",
     "parse-glob": "registry:dt/parse-glob#3.0.4+20160110125512",
-    "polymer": "registry:dt/polymer#1.1.6+20160317120654",
     "q": "registry:dt/q#0.0.0+20160323171452",
     "relateurl": "registry:dt/relateurl#0.2.6+20160316155526",
     "run-sequence": "registry:dt/run-sequence#0.0.0+20160316155526",
     "source-map": "registry:dt/source-map#0.0.0+20160317120654",
     "uglify-js": "registry:dt/uglify-js#2.6.1+20160316155526",
-    "vinyl": "registry:dt/vinyl#1.1.0+20160316155526",
-    "webcomponents.js": "registry:dt/webcomponents.js#0.6.0+20160317120654"
+    "vinyl": "registry:dt/vinyl#1.1.0+20160316155526"
   }
 }
