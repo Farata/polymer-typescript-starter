@@ -14,7 +14,7 @@
   },
   "devDependencies": {
     "bower": "^1.7.9",
-    "browser-sync": "^2.11.2",
+    "browser-sync": "^2.12.3",
     "connect-history-api-fallback": "^1.2.0",
     "del": "^2.2.0",
     "glob": "^7.0.3",
@@ -23,18 +23,18 @@
     "gulp-gzip": "^1.2.0",
     "gulp-htmlmin": "^1.3.0",
     "gulp-if": "^2.0.0",
-    "gulp-load-plugins": "^1.2.0",
+    "gulp-load-plugins": "^1.2.2",
     "gulp-shell": "^0.5.2",
     "gulp-sourcemaps": "^1.6.0",
-    "gulp-typescript": "^2.12.2",
+    "gulp-typescript": "^2.13.0",
     "gulp-util": "^3.0.7",
     "node-static": "^0.7.7",
     "polylint": "^2.10.1",
     "run-sequence": "^1.1.5",
-    "ts-node": "^0.7.1",
-    "typescript": "^1.8.9",
+    "ts-node": "^0.7.2",
+    "typescript": "^1.8.10",
     "typings": "^0.7.12",
-    "web-component-shards": "^1.1.3",
+    "web-component-shards": "^1.1.4",
     "web-component-tester": "^4.2.2"
   }
 }

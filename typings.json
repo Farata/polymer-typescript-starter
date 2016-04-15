@@ -21,14 +21,16 @@
     "html-minifier": "registry:dt/html-minifier#1.1.1+20160316155526",
     "micromatch": "registry:dt/micromatch#2.3.7+20160123140905",
     "minimatch": "registry:dt/minimatch#2.0.8+20160317120654",
-    "node": "registry:dt/node#4.0.0+20160330064709",
+    "node": "registry:dt/node#4.0.0+20160412142033",
     "orchestrator": "registry:dt/orchestrator#0.0.0+20160316155526",
     "parse-glob": "registry:dt/parse-glob#3.0.4+20160110125512",
     "q": "registry:dt/q#0.0.0+20160323171452",
     "relateurl": "registry:dt/relateurl#0.2.6+20160316155526",
     "run-sequence": "registry:dt/run-sequence#0.0.0+20160316155526",
-    "source-map": "registry:dt/source-map#0.0.0+20160317120654",
     "uglify-js": "registry:dt/uglify-js#2.6.1+20160316155526",
     "vinyl": "registry:dt/vinyl#1.1.0+20160316155526"
+  },
+  "devDependencies": {
+    "source-map": "registry:npm/source-map#0.4.0+20160211003958"
   }
 }
